@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.poli.Corte3Project.controlador.PedidoController"
+            prefWidth="600" prefHeight="400">
+
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+        <!-- Selección de cliente -->
+        <HBox spacing="10">
+            <Label text="Cliente:"/>
+            <ComboBox fx:id="comboCliente" prefWidth="300"/>
+        </HBox>
+
+        <!-- Selección de productos -->
+        <HBox spacing="10">
+            <Label text="Producto:"/>
+            <ComboBox fx:id="comboProducto" prefWidth="300"/>
+            <Button text="Agregar al pedido" onAction="#agregarProducto"/>
+        </HBox>
+
+        <!-- Lista de productos en el pedido -->
+        <Label text="Productos en el pedido:"/>
+        <ListView fx:id="listaProductos" prefHeight="100"/>
+
+        <!-- Selección de estrategia de descuento -->
+        <HBox spacing="10">
+            <Label text="Descuento:"/>
+            <ComboBox fx:id="comboDescuento" prefWidth="300"/>
+        </HBox>
+
+        <!-- Mostrar total -->
+        <HBox spacing="10">
+            <Button text="Calcular Total" onAction="#calcularTotal"/>
+            <Label text="Total:"/>
+            <Label fx:id="labelTotal"/>
+        </HBox>
+    </VBox>
+</AnchorPane>
