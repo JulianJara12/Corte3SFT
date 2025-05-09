@@ -4,15 +4,25 @@ public class Producto {
     private int id;
     private String descripcion;
     private double precio;
+    private int stock;
 
-    public Producto(int id, String descripcion, double precio) {
+    public Producto(int id, String descripcion, double precio, int stock) {
         this.id = id;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.stock = stock;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public double getPrecio() {
         return precio;
+    }
+
+    public int getStock() {
+        return stock;
     }
 
     @Override
@@ -20,4 +30,3 @@ public class Producto {
         return descripcion + " ($" + precio + ")";
     }
 }
-

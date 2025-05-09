@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-	
-	private Cliente cliente;
-	private List<Producto> productos;
-	private DescuentoStrategy estrategiaDescuento;
+
+    private Cliente cliente;
+    private List<Producto> productos;
+    private DescuentoStrategy estrategiaDescuento;
 
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
         this.productos = new ArrayList<>();
+    }
+
+    public Pedido(Cliente cliente, List<Producto> productos) {
+        this.cliente = cliente;
+        this.productos = productos;
     }
 
     public void agregarProducto(Producto producto) {
