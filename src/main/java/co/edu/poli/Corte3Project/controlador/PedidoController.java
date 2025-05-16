@@ -10,6 +10,7 @@ import co.edu.poli.Corte3Project.modelo.DescuentoStrategy;
 import co.edu.poli.Corte3Project.modelo.OrderProcessor;
 import co.edu.poli.Corte3Project.modelo.Pedido;
 import co.edu.poli.Corte3Project.modelo.Producto;
+import co.edu.poli.Corte3Project.modelo.ReporteVisitor;
 import co.edu.poli.Corte3Project.modelo.SinDescuento;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -111,4 +112,24 @@ public class PedidoController extends ControladorBase {
 
         orderProcessor = new OrderProcessor();
     }
+    @FXML
+    void mostrarReporte(ActionEvent event) {
+        if (pedido == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Pedido no creado");
+            alert.setContentText("Debes confirmar primero un pedido para ver el reporte.");
+            alert.show();
+            return;
+        }
+
+        ReporteVisitor visitor = new ReporteVisitor();
+        pedido.accept(visitor);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Reporte del Pedido");
+        alert.setHeaderText("Detalles del Pedido");
+        alert.setContentText(visitor.getReporte());
+        alert.showAndWait();
+    }
+
 }

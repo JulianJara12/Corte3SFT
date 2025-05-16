@@ -1,6 +1,6 @@
 package co.edu.poli.Corte3Project.modelo;
 
-public class Cliente {
+public class Cliente implements Visitable {
     private int id;
     private String nombre;
     private String email;
@@ -11,9 +11,8 @@ public class Cliente {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
-
         this.isActivo = true;
-        this.limiteCredito = 100000;
+        this.limiteCredito = 150000;
     }
 
     public String getNombre() {
@@ -41,4 +40,8 @@ public class Cliente {
         return nombre;
     }
 
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
 }

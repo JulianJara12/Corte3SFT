@@ -3,7 +3,7 @@ package co.edu.poli.Corte3Project.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pedido {
+public class Pedido implements Visitable {
 
     private Cliente cliente;
     private List<Producto> productos;
@@ -41,5 +41,14 @@ public class Pedido {
 
     public List<Producto> getProductos() {
         return productos;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+        cliente.accept(visitor);
+        for (Producto p : productos) {
+            p.accept(visitor);
+        }
     }
 }

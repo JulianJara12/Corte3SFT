@@ -1,6 +1,6 @@
 package co.edu.poli.Corte3Project.modelo;
 
-public class Producto {
+public class Producto implements Visitable {
     private int id;
     private String descripcion;
     private double precio;
@@ -28,5 +28,10 @@ public class Producto {
     @Override
     public String toString() {
         return descripcion + " ($" + precio + ")";
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }
